@@ -1,0 +1,28 @@
+[
+    
+    {
+        "name":"Tails",
+        "species":"fopso",
+        "interest":"building things and helping people"
+    },
+    {
+        "name": "nyx",
+        "species":"dragon",
+        "interest":"coding"
+    },
+    {
+        "name":"newt",
+        "species":"hooman",
+        "interest":"engineering"
+    },
+    {
+        "name":"rosaline",
+        "species":"dragon",
+        "interest":"the ocean!!!"
+    },
+    {
+        "name":"Rocket the Raccoon",
+        "species":"raccoon",
+        "interest":"SPAAAACEEEEEEE"
+    }
+]

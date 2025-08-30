@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CS55.13 Week 2 Assignment</title>
+        <!--load juery for json loading-->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <!--load babel transpiler to do JSC -> JS-->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+        <!--root element for react app-->
+        <div id="tailsApp"></div>
+        <!--html in this file being received as this is displayed on the site-->
+        <!-- <h1>My Friendly Headmate Friends</h1> -->
+        <!--custom script with react component-->
+        <script data-type="module" data-presets="react" type="text/babel">
+            "use strict";
+            //load react js module
+            import React from 'https://cdn.jsdelivr.net/npm/react@19.1.1/+esm';
+            //load createRoot method from REACTDOM/client
+            import { createRoot } from 'https://cdn.jsdelivr.net/npm/react-dom@19.1.1/client/+esm';
+
+            console.log("test1");
+
+            //react page component
+            function HeadmatesList(headmates) {
+                console.log("hello from headmates");
+                //return output for component using JSX, table???
+                return  <div>
+                            <h1>My Friendly Headmate Friends</h1>
+                            <ol>
+                            {
+                                // use map() to loop thru array passed in props.list
+                                headmates.list.map(
+                                    // copy current array value into item and pass to arrow function
+                                    (item,index) => (
+                                        <li key={index}>
+                                            <p>Name: {item.name}</p>
+                                            <p>Species: {item.species}</p>
+                                            <p>Interest: {item.interest}</p>
+                                        </li>
+                                    )
+                                )
+                            }
+                            </ol>
+                            <p>Thanks for learning more about us!!! :3</p>
+                        </div>;
+            }
+
+            //use JQuery to load JSON
+            //2 args, URL, a func receives JSON
+            //HeadmatesList function not called, so not getting json file?
+            $.getJSON("x",
+                function(jsonFromJquery) {
+                    console.log(jsonFromJquery);
+                    //react and build app
+                    const myElem = document.getElementById('tailsApp');
+                    //reactDOM createRoot() for root html elem for app
+                    const myRootElem = createRoot(myElem);
+                    //call react render() to output comopnent into existing element
+                    myRootElem.render(
+                        <HeadmatesList list={jsonFromJquery} />
+                    );
+                }
+            );
+        </script>
+        <!--
+                                    <ol>
+                                {
+                                    //map() to loop through array in props.list (headmates.list)
+                                    headmates.list.map(
+                                        //copy array val and pass to arrow function
+                                        //() for arrow function in JSX. add html display in li element
+                                        (item, index) => (
+                                            <li key={index}>
+                                                <p>hello</p>
+                                            </li>
+                                        )
+                                    )
+                                }
+                            </ol>-->
+    </body>
+</html>
